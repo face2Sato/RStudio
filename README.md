@@ -1,8 +1,8 @@
 # R/Shiny
 
-### Tipps
+## Tipps
 
-##### 	Commands
+#### 	Commands
 
 ​		ctrl tab ... tab change
 
@@ -18,7 +18,7 @@
 
 ​		? hoge ... call help of hoge
 
-##### 	Others		
+#### 	Others		
 
 ​		Unfortunately, 1 is used to first index in R...
 
