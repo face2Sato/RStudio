@@ -1,24 +1,28 @@
-# server.R
-# ctrl tab ... tab change
-# ctrl alt r ... run current document
-# shift alt r ... open new terminal
-# ctrl 1 ... move to code editor
-# ctrl 2 ... move to console
-# shift alt m ... move to terminal
-# Unfortunately, 1 is used to first index in R...
-# ? hoge ... call the help of hoge
-#
+source("helpers.R")
+counties <- readRDS("data/counties.rds")
+library(maps)
+library(mapproj)
 
 shinyServer(
     function(input, output) {
         
-        output$text1 <- renderText({ 
-            paste("You have selected", input$var)
+        output$map <- renderPlot({ 
+            data <- switch(input$var,
+                "Percent White" = counties$white,
+                "Percent Black" = counties$black,
+                "Percent Hispanic" = counties$hispanic,
+                "Percent Asian" = counties$asian)
+            
+            
+            color <- switch(input$var,
+                "Percent White" = "gray",
+                "Percent Black" = "black",
+                "Percent Hispanic" = "orange",
+                "Percent Asian" = "purple")
+            
+            
+            percent_map(data, color, input$var, input$range[1], input$range[2])
         })
         
-        output$text2 <- renderText({ 
-            paste("You have chosen a range that goes from",
-                  input$range[1], "to", input$range[2])
-        })
     }
 )
