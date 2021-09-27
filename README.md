@@ -23,3 +23,5 @@
 ​		Unfortunately, 1 is used to first index in R...
 
 ​		The directory that you save server.R in will become the working directory of your Shiny app.
+
+​		I have not been understand reactive(), so I should focus on it.
